@@ -34,7 +34,7 @@ colnames(merged_data) <- tolower(colnames(merged_data))
 ## Part 3: Create meaningful activity names
 currentActivity <- 1
 for (currentActivityLabel in activityLabels$V2) {
-  allData$activity <- gsub(currentActivity, currentActivityLabel, allData$activity)
+  merged_data$activity <- gsub(currentActivity, currentActivityLabel, merged_data$activity)
   currentActivity <- currentActivity + 1
 }
 
@@ -44,4 +44,4 @@ merged_data$subject <- as.factor(merged_data$subject)
 ## Part 5: Creating tidy data
 tidy <- aggregate(merged_data, by=list(activity = merged_data$activity, subject=merged_data$subject), mean)
 tidy2<-tidy[,1:88]
-write.table(tidy2, "tidy.txt", sep="\t", row.name=FALSE)
+write.table(tidy2, "C:/Users/patzerl/Documents/Coursera/Getting-and-Cleaning-Data/tidy.txt", sep="\t", row.name=FALSE)
